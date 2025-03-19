@@ -25,7 +25,7 @@ class Audit(Base):
     requester = relationship("User", back_populates="audits")
 
     def __repr__(self):
-        return f"<Audit(id={self.id}, type_audit={self.type_audit}, etat={self.etat})>"
+        return f"<Audit(id={self.id}, etat={self.etat})>"
 
 
     """
