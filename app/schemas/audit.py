@@ -12,7 +12,7 @@ class AuditBase(BaseModel):
     description: str
     objectif: str
     urgence: str
-    fichier_attache: Optional[str] = None  # Stocke l'URL ou le chemin du fichier
+    fichier_attache: Optional[str] = None
 
 class AuditCreate(AuditBase):
     user_id: int
