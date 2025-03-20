@@ -23,6 +23,7 @@ class AuditResponse(AuditBase):
     id: int
     date_creation: date
     etat: str
+    pdf_report_path: Optional[str] = None
 
     class Config:
         from_attributes = True
