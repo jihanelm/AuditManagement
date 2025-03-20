@@ -3,10 +3,9 @@ from sqlalchemy.orm import Session
 from typing import List, Optional
 from app.core.database import get_db
 from app.schemas.audit import AuditResponse
-from app.services.audit import create_audit, get_all_audits, get_audit_by_id
+from app.services.audit import create_audit, get_all_audits, get_audit_by_id, save_uploaded_file
 
 router = APIRouter()
-
 
 @router.post("/request", response_model=AuditResponse)
 def create_audit_request(
@@ -23,25 +22,20 @@ def create_audit_request(
     fichier_attache: Optional[UploadFile] = File(None),
     db: Session = Depends(get_db),
 ):
-    file_bytes = fichier_attache.file.read() if fichier_attache else None
-    fichier_name = fichier_attache.filename if fichier_attache else None
+
+    """audit = create_audit(
+        user_id, type_audit, demandeur_nom, demandeur_prenom, demandeur_email,
+        demandeur_phone, demandeur_departement, description, objectif, urgence,
+        file_bytes, fichier_name, db
+    )"""
 
     audit = create_audit(
         type_audit, demandeur_nom, demandeur_prenom, demandeur_email,
         demandeur_phone, demandeur_departement, description, objectif, urgence,
-        file_bytes, fichier_name, db
+        fichier_attache, db
     )
-
-    """
-    audit = create_audit(
-        user_id, type_audit, demandeur_nom, demandeur_prenom, demandeur_email,
-        demandeur_phone, demandeur_departement, description, objectif, urgence,
-        file_bytes, fichier_name, db
-    )
-    """
 
     return audit
-
 
 @router.get("/", response_model=List[AuditResponse])
 def get_audits(db: Session = Depends(get_db)):
