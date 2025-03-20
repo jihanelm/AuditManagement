@@ -1,3 +1,0 @@
-KEYCLOAK_URL=http://localhost:8080
-KEYCLOAK_REALM=MyApp
-KEYCLOAK_CLIENT_ID=backend-app
