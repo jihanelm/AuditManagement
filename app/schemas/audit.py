@@ -14,8 +14,10 @@ class AuditBase(BaseModel):
     urgence: str
     fichier_attache: Optional[str] = None
 
+"""
 class AuditCreate(AuditBase):
     user_id: int
+"""
 
 class AuditResponse(AuditBase):
     id: int
