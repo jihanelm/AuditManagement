@@ -19,7 +19,8 @@ class Audit(Base):
     description = Column(String(500), nullable=False)
     objectif = Column(String(500), nullable=False)
     urgence = Column(String(50), nullable=False)
-    fichier_attache = Column(String(255), nullable=True)  # Stocke le chemin du fichier
+    fichier_attache = Column(String(255), nullable=True)
+    pdf_report_path = Column(String(255), nullable=True)
 
     """
     user_id = Column(Integer, ForeignKey("users.id", ondelete="CASCADE"), nullable=False)
